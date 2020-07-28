@@ -1,0 +1,56 @@
+part 3
+
+1. create 3 aws instances named as follows(hostname too)
+
+	- manager
+	- node1
+	- node2
+
+2. initialise docker swarm on the manager instanse
+
+3. add node1 & node2 instances to the swarm as worker nodes
+
+4. create a new overlay network named web-network
+
+5. create a service to run on the swarm with following config
+
+	- set name of the service as srv1
+	- publish the port as *:8000->80
+	- use web-network for the service as network
+	- use mitrasonu/dsapp:1 image
+        - replicas 3
+        - update existing srv1 to image mitrasonu/dsapp:2
+
+6. create a service to run on the swarm with following config
+
+	- set name of the service as srv2
+	- use web-network for the service as network
+	- publish the port as *:8080->80
+	- configure service to only run on node2
+	- limit RAM usage to 200MB
+	- limit CPUs ot .3
+	- use mitrasonu/dsapp:1 image
+        - replicas 2
+
+7. create a new aws instance named manager2(hostname too)
+
+8. join manager2 to the swarm as a manager node
+
+9. scale service srv1 to 6
+
+10. update availability of node2 to pause
+
+11. scale service srv2 to 4
+
+12. update availability of manager to drain
+
+13. create a new overlay network named web-network2
+
+14. create a service (global ) to run on the swarm with following config
+
+	- set name of the service as gsrv
+	- publish the port as *:8090->80
+	- use web-network2 for the service as network
+	- use mitrasonu/dsapp:1 image
+
+15. Monitor Docker Swarm Cluster using Docker Swarm Visualizer tool	
