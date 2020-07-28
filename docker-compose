@@ -1,0 +1,39 @@
+part 2
+
+
+1. make a docker-compose file to run following services
+	a) wordpress
+		- use wordpress as base image	
+		- pudlish port 80 to 1235
+		- link wordpress service to db
+	b) db
+		- use maria as base image
+		- define the following enviornment variables
+			MYSQL_ROOT_PASSWORD=password
+			MYSQL_USER: user
+			MYSQL_PASSWORD: userpassword
+     			MYSQL_DATABASE: wp
+
+2. Create a custome image using Dockerfile with following configurations
+	- use centosas base image
+	- set container image as <docker-username>/my-httpd	###replace <docker-username> with your dockerhub username
+	- expose the listed ports: 80. 127
+	- copy index.html file from host machine containing your name on to /var/www/html/ in container
+3. push the image created in (2) to your dockerhub registry
+
+
+4.Run a container with following configs
+	- use centos as base image
+	- allocate RAM/Memory 256mb to the comtainer
+
+5. make a docker-compose file to run following services
+	a) phpmyadmin
+		- use phpmyadmin/phpmyadmin as base image
+		- pudlish container 80 to 8800
+		- link phpmyadmin service to db
+	b) db
+		- use maria as base image
+		- define the following enviornment variables
+			MYSQL_ROOT_PASSWORD=password
+	
+	login to phpmyadmin and make a database
